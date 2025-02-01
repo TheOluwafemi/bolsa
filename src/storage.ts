@@ -1,9 +1,24 @@
-import { isReactNative } from './platform'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
-// web storage -- indexedDB
 const DB_NAME = 'tinystate_db'
 const STORE_NAME = 'state_store'
+
+// Native Storage (AsyncStorage)
+let AsyncStorage: any
+
+export const getPlatform = (): string => {
+  try {
+    // Dynamically require react-native only if available
+    const Platform = require('react-native').Platform
+    return Platform.OS
+  } catch (error) {
+    return typeof window !== 'undefined' ? 'web' : 'node'
+  }
+}
+;(() => {
+  const platform = getPlatform()
+  if (platform === 'android' || platform === 'ios') {
+    AsyncStorage = require('@react-native-async-storage/async-storage').default
+  }
+})()
 
 // open indexedDB
 function openDB(): Promise<IDBDatabase> {
@@ -21,7 +36,9 @@ function openDB(): Promise<IDBDatabase> {
 // save to storage depending on platform
 export async function saveToStorage<T>(key: string, value: T): Promise<void> {
   const data = JSON.stringify(value)
-  if (!isReactNative) {
+  const platform = await getPlatform()
+
+  if (platform === 'web') {
     const db = await openDB()
     const transaction = db.transaction(STORE_NAME, 'readwrite')
     transaction.objectStore(STORE_NAME).put(data, key)
@@ -32,7 +49,9 @@ export async function saveToStorage<T>(key: string, value: T): Promise<void> {
 
 // load from storage depending on platform
 export async function loadFromStorage<T>(key: string): Promise<T | null> {
-  if (!isReactNative) {
+  const platform = await getPlatform()
+
+  if (platform === 'web') {
     const db = await openDB()
     const transaction = db.transaction(STORE_NAME, 'readonly')
     const request = transaction.objectStore(STORE_NAME).get(key)
