@@ -1,5 +1,5 @@
 {
-  "name": "tinystate",
+  "name": "bolsa",
   "version": "1.0.0",
   "description": "state management for web & mobile with persistence, middleware and encryption support",
   "main": "./dist/index.js",
@@ -15,7 +15,8 @@
   "keywords": [
     "state",
     "store",
-    "state-management"
+    "state-management", 
+    "encrypted-state"
   ],
   "author": "D. Oluwafemi",
   "license": "MIT",

@@ -1,6 +1,6 @@
-# 🔐 Tinystate: A Lightweight State Management Library with Persistence & Middleware
+# 🔐 Bolsa: A Lightweight State Management Library with Persistence & Middleware
 
-**Tinystate** is a lightweight state management library written in TypeScript, offering:
+**Bolsa** is a lightweight state management library written in TypeScript, offering:
 
 ✅ **Global State Management**
 ✅ **Automatic Persistence** (IndexedDB for Web, AsyncStorage for React Native)
@@ -13,13 +13,13 @@
 ## 🚀 Installation
 
 ```sh
-npm install tinystate
+npm install bolsa
 ```
 
 or
 
 ```sh
-yarn add tinystate
+yarn add bolsa
 ```
 
 ---
@@ -28,7 +28,7 @@ yarn add tinystate
 
 ### **1️⃣ Create a Simple Store**
 ```typescript
-import { createStore } from "tinystate";
+import { createStore } from "bolsa";
 
 const counter = createStore(0, "counter-key");
 
@@ -56,7 +56,7 @@ Middleware functions allow you to **modify, log, or validate state changes** bef
 
 ### **Adding Middleware**
 ```typescript
-import { createStore, Middleware } from "tinystate";
+import { createStore, Middleware } from "bolsa";
 
 const logger: Middleware<number> = (state, next) => {
   console.log("Previous State:", state);
