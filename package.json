@@ -2,9 +2,11 @@
   "name": "tinystate",
   "version": "1.0.0",
   "description": "state management for web & mobile with persistence, middleware and encryption support",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,9 @@
   },
   "homepage": "https://github.com/TheOluwafemi/tinystate#readme",
   "devDependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.0",
+    "@types/node": "^22.13.0",
+    "tsup": "^8.3.6",
     "typescript": "^5.7.3"
   }
 }
