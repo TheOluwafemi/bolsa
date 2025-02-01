@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6", // or "ES6"
+    "module": "ESNext", // or "ES6"
+    "lib": ["es2016", "esnext", "dom"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types", "./types"]
+  },
+  "exclude": ["node_modules", "dist"]
+}
