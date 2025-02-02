@@ -1,0 +1,31 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Set up npm
+        run: npm install -g npm@10
+
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      - name: create pull-request or publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: npm run build
