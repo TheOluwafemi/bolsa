@@ -10,7 +10,8 @@
     "require": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "lint": "tsc"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/TheOluwafemi/tinystate#readme",
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^22.13.0",
