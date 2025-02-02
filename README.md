@@ -4,7 +4,6 @@
 
 ✅ **Global State Management**
 ✅ **Automatic Persistence** (IndexedDB for Web, AsyncStorage for React Native)
-✅ **AES-256 Encryption** using `crypto-js`
 ✅ **Middleware Support** for logging, validation, and more
 ✅ **Minimal Dependencies** & Blazing Fast Performance
 
@@ -40,13 +39,13 @@ counter.update(n => n + 1); // Increments state
 
 ---
 
-### **2️⃣ Persistent User Store (Encrypted)**
+### **2️⃣ Persistent User Store**
 ```typescript
 const userStore = createStore({ name: "Alice", age: 25 }, "user-store");
 
 userStore.subscribe(user => console.log("User State:", user));
 
-userStore.set({ name: "Bob", age: 30 }); // Stores encrypted user data
+userStore.set({ name: "Bob", age: 30 }); // Stores user data
 ```
 
 ---
@@ -77,16 +76,14 @@ const counter = createStore(0, "counter-key", [logger, preventNegative]);
 
 ---
 
-## 🔒 Encryption & Persistence
-This library **encrypts** state before saving it using **AES-256-CBC** with `crypto-js`.
+## 💼 Persistence
 
 - **Web:** Uses IndexedDB for persistence.
 - **React Native:** Uses AsyncStorage.
 
 ### **How it Works**
-1. **State updates** trigger `encryptData()` before saving.
+1. **State updates** save the data
 2. **Data is stored in IndexedDB (Web) or AsyncStorage (React Native).**
-3. **When restoring, `decryptData()` decrypts the stored value.**
 
 ---
 
@@ -109,11 +106,10 @@ Creates a new store with optional persistence and middleware support.
 
 ---
 
-## 📌 Why Use EncryptedStore?
+## 📌 Why Use Bolsa?
 ✅ **Fast & Lightweight** (Minimal dependencies)
 ✅ **Cross-Platform** (Works on Web & React Native)
 ✅ **Automatic Persistence** (IndexedDB / AsyncStorage)
-✅ **AES-256 Encryption** for secure data storage
 ✅ **Middleware Support** for enhanced control
 ✅ **Simple API** for ease of use
 

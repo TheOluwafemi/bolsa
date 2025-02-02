@@ -1,5 +1,4 @@
 import { saveToStorage, loadFromStorage } from './storage.js'
-import { encryptData, decryptData } from './encryption.js'
 
 export type Middleware<T> = (state: T, next: (newState: T) => void) => void
 
@@ -61,8 +60,7 @@ export class Store<T> {
     this.state = newState
     this.notify()
     if (this.storageKey) {
-      const encrypted = encryptData(JSON.stringify(newState))
-      await saveToStorage(this.storageKey, encrypted)
+      await saveToStorage(this.storageKey, JSON.stringify(newState))
     }
   }
 
@@ -72,10 +70,9 @@ export class Store<T> {
 
   private async restoreState(): Promise<void> {
     if (this.storageKey) {
-      const encrypted = await loadFromStorage<string>(this.storageKey)
-      if (encrypted) {
-        const decrypted = decryptData(encrypted)
-        this.state = JSON.parse(decrypted)
+      const savedData = await loadFromStorage<string>(this.storageKey)
+      if (savedData) {
+        this.state = JSON.parse(savedData)
         this.notify()
       }
     }

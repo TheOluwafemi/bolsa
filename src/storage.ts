@@ -36,7 +36,7 @@ function openDB(): Promise<IDBDatabase> {
 // save to storage depending on platform
 export async function saveToStorage<T>(key: string, value: T): Promise<void> {
   const data = JSON.stringify(value)
-  const platform = await getPlatform()
+  const platform = getPlatform()
 
   if (platform === 'web') {
     const db = await openDB()
@@ -49,7 +49,7 @@ export async function saveToStorage<T>(key: string, value: T): Promise<void> {
 
 // load from storage depending on platform
 export async function loadFromStorage<T>(key: string): Promise<T | null> {
-  const platform = await getPlatform()
+  const platform = getPlatform()
 
   if (platform === 'web') {
     const db = await openDB()
