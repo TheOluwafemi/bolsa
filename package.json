@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "release": "npm run build && changeset publish",
     "lint": "tsc"
   },
   "repository": {
