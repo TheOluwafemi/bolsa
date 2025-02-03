@@ -1,4 +1,4 @@
-const DB_NAME = 'tinystate_db'
+const DB_NAME = 'bolsa_db'
 const STORE_NAME = 'state_store'
 
 // Native Storage (AsyncStorage)
@@ -13,6 +13,7 @@ export const getPlatform = (): string => {
     return typeof window !== 'undefined' ? 'web' : 'node'
   }
 }
+  
 ;(() => {
   const platform = getPlatform()
   if (platform === 'android' || platform === 'ios') {
@@ -41,7 +42,7 @@ export async function saveToStorage<T>(key: string, value: T): Promise<void> {
   if (platform === 'web') {
     const db = await openDB()
     const transaction = db.transaction(STORE_NAME, 'readwrite')
-    transaction.objectStore(STORE_NAME).put(data, key)
+    transaction.objectStore(STORE_NAME).put(value, key)
   } else {
     AsyncStorage.setItem(key, data)
   }
@@ -58,7 +59,7 @@ export async function loadFromStorage<T>(key: string): Promise<T | null> {
 
     return new Promise(async (resolve, reject) => {
       request.onsuccess = () =>
-        resolve(request.result ? JSON.parse(request.result) : null)
+        resolve(request.result ? request.result : null)
       request.onerror = () => reject(request.error)
     })
   } else {

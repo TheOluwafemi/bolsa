@@ -1,6 +1,6 @@
 {
   "name": "bolsa",
-  "version": "1.0.4",
+  "version": "0.1.0",
   "description": "state management for web & mobile with persistence, middleware and encryption support",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
