@@ -1,4 +1,4 @@
-# 🔐 Bolsa: A Lightweight State Management Library with Persistence & Middleware
+## 🔐 Bolsa: A Lightweight State Management Library with Persistence & Middleware
 
 **Bolsa** is a lightweight state management library written in TypeScript, offering:
 
